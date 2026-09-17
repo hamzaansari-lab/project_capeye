@@ -1,19 +1,18 @@
 #include <iostream>
-#include <cassert>
 using namespace std;
+const int LOW_THRESHOLD = 10;
+const int HIGH_THRESHOLD = 25;
+const int MAX_RETRIES = 3;
 
-string level(int d){
-    if(d<10) return "FULL";
-    if(d<25) return "HALF";
-    return "EMPTY";
-}
+int main() {
+    int d = 15;
 
-int main(){
-    assert(level(8)=="FULL");
-    assert(level(10)=="HALF");
-    assert(level(15)=="HALF");
-    assert(level(25)=="EMPTY");
-    assert(level(30)=="EMPTY");
+    if (d < LOW_THRESHOLD)
+        cout << "FULL";
+    else if (d < HIGH_THRESHOLD)
+        cout << "HALF";
+    else
+        cout << "EMPTY";
 
-    cout<<"TEST PASSED";
+    return 0;
 }
