@@ -1,23 +1,16 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
-struct Payload {
-    int reading, battery;
-};
-
-bool sendData(Payload d) {
-    cout << "Sending: " << d.reading << ", " << d.battery << "%" << endl;
-    return false;
-}
-
 int main() {
-    Payload d = {20, 80};
+    srand(time(0));
 
-    for (int i = 1; i <= 3; i++) {
-        if (sendData(d))
-            return 0;
-        cout << "Retry " << i << endl;
+    for(int i=0;i<3;i++) {
+        if(rand()%2) {
+            cout<<"SEND OK";
+            break;
+        }
+        cout<<"SEND FAILED\n";
     }
-
-    cout << "SEND FAILED";
 }
