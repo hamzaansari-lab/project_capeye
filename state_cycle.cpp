@@ -1,23 +1,24 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
-enum State { SLEEP, WAKE, MEASURE, SEND };
-
 int main() {
-    State state = SLEEP;
+    srand(time(0));
 
-    for (int i = 0; i < 5; i++) {
-        cout << "SLEEP\n";
-        state = WAKE;
+    int b=rand()%101;
+    int s=rand()%51;
 
-        cout << "WAKE\n";
-        state = MEASURE;
+    cout<<"WAKE\n";
+    cout<<"BATTERY: "<<b<<"%\n";
 
-        cout << "MEASURE\n";
-        state = SEND;
+    if(b<20)
+        cout<<"SEND SKIPPED\n";
+    else if(s==0)
+        cout<<"MEASURE FAILED\n";
+    else
+        cout<<"SEND OK";
 
-        cout << "SEND\n";
-        state = SLEEP;
-
-    }
+    cout<<"SLEEP";
 }
+
